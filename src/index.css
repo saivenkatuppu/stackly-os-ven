@@ -41,7 +41,8 @@
     /* Custom Stackly tokens */
     --text-body: 215 16% 37%;
     --section-alt: 145 22% 92%;
-    --footer-bg: 150 70% 12%;
+    --footer-bg: 160 45% 16%; /* #173E34 deep green */
+    --footer-muted: 160 20% 60%;
     --warning: 45 93% 47%;
   }
 
