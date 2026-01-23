@@ -53,7 +53,10 @@ export default {
         },
         body: "hsl(var(--text-body))",
         "section-alt": "hsl(var(--section-alt))",
-        footer: "hsl(var(--footer-bg))",
+        footer: {
+          DEFAULT: "hsl(var(--footer-bg))",
+          muted: "hsl(var(--footer-muted))",
+        },
         warning: "hsl(var(--warning))",
       },
       borderRadius: {
