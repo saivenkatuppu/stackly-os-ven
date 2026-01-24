@@ -28,41 +28,42 @@ export function FounderSection() {
                             </div>
 
                             {/* Floating Badge */}
-                            <div className="absolute -bottom-6 -right-2 md:-right-6 bg-card border border-border p-4 rounded-xl shadow-xl flex items-center gap-3 animate-float">
-                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                                    <Quote className="w-5 h-5" />
+                            <div className="absolute -bottom-6 -right-2 md:-right-6 bg-card border border-border p-3 md:p-4 rounded-xl shadow-xl flex items-center gap-2 md:gap-3 animate-float">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <Quote className="w-4 h-4 md:w-5 md:h-5" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-foreground">Vision to Reality</p>
-                                    <p className="text-xs text-muted-foreground">Execution focussed</p>
+                                    <p className="text-xs md:text-sm font-bold text-foreground">Vision to Reality</p>
+                                    <p className="text-[10px] md:text-xs text-muted-foreground">Execution focussed</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Content Side */}
-                    <div className="w-full lg:w-2/3 text-left animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-                        <span className="text-eyebrow mb-4 block">THE FOUNDER</span>
+                    <div className="w-full lg:w-2/3 text-center lg:text-left animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+                        <span className="text-eyebrow mb-4 block mx-auto lg:mx-0 w-fit">THE FOUNDER</span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
-                            Building the next generation of <span className="text-primary">technology-driven ventures</span>.
+                            Building the next generation of
+                            <span className="text-primary block mt-2">technology-driven ventures.</span>
                         </h2>
 
-                        <div className="prose prose-lg text-muted-foreground mb-8">
+                        <div className="prose prose-lg text-muted-foreground mb-8 mx-auto lg:mx-0">
                             <p className="mb-4">
-                                I’m <strong>Kavyanth Munagala</strong>, Founder & CEO of <strong>Venturemond</strong>, a next-generation Venture Studio based in
-                                <span className="text-foreground font-medium flex items-center inline-flex gap-1 mx-1 align-baseline relative top-[2px]">
-                                    <MapPin className="w-4 h-4 text-primary" /> Hyderabad, India
-                                </span>.
+                                I’m <strong>Kavyanth Munagala</strong>, Founder & CEO of <strong>Venturemond</strong>, a next-generation Venture Studio
+                                based in <MapPin className="w-4 h-4 inline-block text-primary -mt-1" /> <strong>Hyderabad, India</strong>.
                             </p>
                             <p className="mb-4">
-                                At Venturemond, we turn ideas into execution. My focus lies in product strategy and growth enablement—ensuring every idea is market-ready and scalable. I lead end-to-end operations with a cross-functional perspective gained from AI, logistics, education, and agritech.
+                                At Venturemond, we turn ideas into execution. My focus lies in product strategy and growth
+                                enablement—ensuring every idea is market-ready and scalable. I lead end-to-end operations with a
+                                cross-functional perspective gained from AI, logistics, education, and agritech.
                             </p>
                             <p>
                                 Stackly OS is born from this ethos: a system built for speed, clarity, and results.
                             </p>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                             <a href="https://www.linkedin.com/in/kavyanthm/" target="_blank" rel="noopener noreferrer">
                                 <MagneticWrapper>
                                     <Button variant="default" size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">

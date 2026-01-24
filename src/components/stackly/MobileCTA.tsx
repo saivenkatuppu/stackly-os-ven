@@ -5,6 +5,8 @@ import { EarlyAccessModal } from "./EarlyAccessModal";
 export function MobileCTA() {
   const [modalOpen, setModalOpen] = useState(false);
 
+  return null;
+  /* 
   return (
     <>
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-background/95 backdrop-blur-md border-t border-border p-4">
@@ -15,5 +17,6 @@ export function MobileCTA() {
 
       <EarlyAccessModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
-  );
+  ); 
+  */
 }
