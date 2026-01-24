@@ -28,7 +28,7 @@ export function FounderSection() {
                             </div>
 
                             {/* Floating Badge */}
-                            <div className="absolute -bottom-6 -right-6 bg-card border border-border p-4 rounded-xl shadow-xl flex items-center gap-3 animate-float">
+                            <div className="absolute -bottom-6 -right-2 md:-right-6 bg-card border border-border p-4 rounded-xl shadow-xl flex items-center gap-3 animate-float">
                                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                                     <Quote className="w-5 h-5" />
                                 </div>
