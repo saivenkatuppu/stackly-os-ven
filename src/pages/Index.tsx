@@ -10,7 +10,7 @@ import { ComparisonSection } from "@/components/stackly/ComparisonSection";
 import { ProofSection } from "@/components/stackly/ProofSection";
 import { RoadmapSection } from "@/components/stackly/RoadmapSection";
 import { AudienceSection } from "@/components/stackly/AudienceSection";
-import { TeamSection } from "@/components/stackly/TeamSection";
+import { FounderSection } from "@/components/stackly/FounderSection";
 import { FooterCTA } from "@/components/stackly/FooterCTA";
 import { MobileCTA } from "@/components/stackly/MobileCTA";
 
@@ -30,7 +30,7 @@ const Index = () => {
         <ProofSection />
         <RoadmapSection />
         <AudienceSection />
-        <TeamSection />
+        <FounderSection />
         <FooterCTA />
       </main>
       <MobileCTA />

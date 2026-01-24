@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
-
 @layer base {
   :root {
     /* Stackly OS Green-Led Design System */
-    --background: 145 24% 95%; /* #EEF6F2 soft green */
-    --background-alt: 145 22% 92%; /* #E4F1EC alternate green */
-    --foreground: 222 47% 11%; /* #0F172A near-black */
+    --background: 145 24% 95%;
+    /* #EEF6F2 soft green */
+    --background-alt: 145 22% 92%;
+    /* #E4F1EC alternate green */
+    --foreground: 222 47% 11%;
+    /* #0F172A near-black */
 
     --card: 145 24% 95%;
     --card-foreground: 222 47% 11%;
@@ -17,14 +20,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 150 70% 19%; /* #0F5132 primary green */
+    --primary: 150 70% 19%;
+    /* #0F5132 primary green */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 145 22% 92%;
     --secondary-foreground: 222 47% 11%;
 
     --muted: 145 18% 88%;
-    --muted-foreground: 215 16% 37%; /* #475569 slate gray */
+    --muted-foreground: 215 16% 37%;
+    /* #475569 slate gray */
 
     --accent: 150 50% 25%;
     --accent-foreground: 0 0% 100%;
@@ -36,12 +41,13 @@
     --input: 150 20% 85%;
     --ring: 150 70% 19%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Custom Stackly tokens */
     --text-body: 215 16% 37%;
     --section-alt: 145 22% 92%;
-    --footer-bg: 160 45% 16%; /* #173E34 deep green */
+    --footer-bg: 160 45% 16%;
+    /* #173E34 deep green */
     --footer-muted: 160 20% 60%;
     --warning: 45 93% 47%;
   }
@@ -87,32 +93,43 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-foreground;
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground mb-6;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
   }
 
   h1 {
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.035em;
+    font-weight: 800;
+    /* Extra Bold */
+    line-height: 1.1;
+    letter-spacing: -0.04em;
   }
 
   h2 {
-    font-weight: 400;
-    line-height: 1.15;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
   }
 
   p {
-    @apply text-body leading-relaxed;
+    @apply text-body leading-relaxed mb-6;
     font-family: 'Inter', system-ui, sans-serif;
   }
 }
@@ -131,7 +148,50 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-28 px-6;
+    @apply py-24 md:py-32 px-6;
+  }
+
+  .border-subtle {
+    @apply border border-border;
+  }
+
+  .text-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-wider text-primary mb-2 block;
+  }
+
+  /* Animations */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
   }
 
   .container-narrow {

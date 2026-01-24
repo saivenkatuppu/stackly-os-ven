@@ -27,33 +27,35 @@ export function WhySection() {
   return (
     <section id="why" className="section-padding bg-section-alt">
       <div className="container-wide mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <span className="text-eyebrow mb-6 block">The Problem</span>
+
+        <h2>
           Why Stackly OS Exists
         </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-14">
+        <p className="max-w-2xl mx-auto mb-16">
           Teams are buried in tools, not supported by them.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-14">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {problems.map((problem) => (
             <div
               key={problem.title}
-              className="bg-card p-6 rounded-xl border border-border text-left"
+              className="bg-card p-8 rounded-xl border border-subtle text-left hover:shadow-sm transition-shadow"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <problem.icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">
+              <h3>
                 {problem.title}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="mb-0">
                 {problem.description}
               </p>
             </div>
           ))}
         </div>
 
-        <p className="text-lg text-foreground font-medium max-w-xl mx-auto">
+        <p className="font-medium max-w-xl mx-auto text-foreground">
           Most teams don't need more tools.<br />
           They need a solid workspace foundation.
         </p>

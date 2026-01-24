@@ -36,7 +36,7 @@ export function Header() {
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 active:bg-primary/10 active:scale-95 font-medium"
               >
                 {link.label}
               </button>
