@@ -1,7 +1,7 @@
 import { Check, X } from "lucide-react";
 
 const comparisons = [
-  { stackly: "Open-core", traditional: "Closed systems" },
+  { stackly: "Open-core based", traditional: "Closed systems" },
   { stackly: "Self-hosted or managed", traditional: "Vendor-controlled" },
   { stackly: "Modular", traditional: "Fixed bundles" },
   { stackly: "Data-first", traditional: "Platform lock-in" },

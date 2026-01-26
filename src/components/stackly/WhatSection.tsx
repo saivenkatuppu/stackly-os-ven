@@ -18,7 +18,7 @@ const capabilities = [
   },
   {
     icon: Zap,
-    title: "Foundation for Automation",
+    title: "Foundation for automation & extensibility",
     description: "A base layer designed to support future intelligence.",
   },
 ];
@@ -30,10 +30,13 @@ export function WhatSection() {
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
           What Stackly OS Is
         </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-14">
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
           Stackly OS is an open, modular workspace operating system.
           It brings files, collaboration, and internal workflows together
           on infrastructure teams control.
+        </p>
+        <p className="text-sm text-primary/80 max-w-2xl mx-auto mb-14 italic">
+          Built on proven open-source infrastructure and extended with proprietary workflows, controls, and assistive layers.
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-14">

@@ -2,7 +2,7 @@ import { CheckCircle } from "lucide-react";
 
 const milestones = [
   "Core workspace deployed",
-  "Used internally by the team",
+  "Actively used internally across Venturemond teams",
   "Assistive features under testing",
   "Early customer pilots in progress",
 ];

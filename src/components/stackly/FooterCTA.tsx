@@ -49,7 +49,7 @@ export function FooterCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="footer" size="lg" onClick={() => setAccessModalOpen(true)}>
-              Request Early Access
+              Request Access
             </Button>
             <Button variant="footerOutline" size="lg" onClick={() => setContactModalOpen(true)}>
               Talk to the Team

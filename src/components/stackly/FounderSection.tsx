@@ -1,4 +1,4 @@
-import { Quote, Linkedin, Twitter, Globe, MapPin, Link2 } from "lucide-react";
+import { Quote, MapPin, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticWrapper } from "@/components/ui/magnetic-wrapper";
 
@@ -72,16 +72,7 @@ export function FounderSection() {
                                 </MagneticWrapper>
                             </a>
                             <div className="flex gap-4 px-4">
-                                <a href="https://x.com/Kavyanth_m" target="_blank" rel="noopener noreferrer">
-                                    <MagneticWrapper className="rounded-full">
-                                        <div className="p-2 rounded-full bg-muted/50 hover:bg-black hover:text-white transition-colors group">
-                                            {/* X Logo */}
-                                            <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current">
-                                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-                                            </svg>
-                                        </div>
-                                    </MagneticWrapper>
-                                </a>
+
                                 <a href="https://venturemond.com" target="_blank" rel="noopener noreferrer">
                                     <MagneticWrapper className="rounded-full">
                                         <div className="p-2 rounded-full bg-muted/50 hover:bg-primary/10 hover:text-primary transition-colors">

@@ -3,7 +3,7 @@ import { Search, Lightbulb, FileText, Info } from "lucide-react";
 const features = [
   {
     icon: Search,
-    title: "Smarter search",
+    title: "Enhanced discovery (early)",
     description: "Search across workspace content with improved relevance.",
   },
   {
@@ -13,7 +13,7 @@ const features = [
   },
   {
     icon: FileText,
-    title: "Drafting and summarization",
+    title: "Content assistance (limited scope)",
     description: "Assistance with creating and condensing content. (Limited scope)",
   },
 ];

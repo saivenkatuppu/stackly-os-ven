@@ -65,7 +65,7 @@ export function EarlyAccessModal({ open, onOpenChange }: EarlyAccessModalProps) 
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">Name <span className="text-red-500">*</span></Label>
                 <Input
                   id="name"
                   value={formData.name}
@@ -75,7 +75,7 @@ export function EarlyAccessModal({ open, onOpenChange }: EarlyAccessModalProps) 
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Work Email</Label>
+                <Label htmlFor="email">Work Email <span className="text-red-500">*</span></Label>
                 <Input
                   id="email"
                   type="email"
@@ -86,11 +86,12 @@ export function EarlyAccessModal({ open, onOpenChange }: EarlyAccessModalProps) 
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="company">Company</Label>
+                <Label htmlFor="company">Company <span className="text-red-500">*</span></Label>
                 <Input
                   id="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  required
                   placeholder="Your company"
                 />
               </div>
