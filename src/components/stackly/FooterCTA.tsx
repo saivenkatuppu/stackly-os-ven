@@ -65,8 +65,7 @@ export function FooterCTA() {
             {/* Left: Logo & Description */}
             <div className="md:col-span-4">
               <div className="flex items-center gap-3 mb-4">
-                <img src={stacklyLogo} alt="Stackly OS" className="h-9 w-9" />
-                <span className="font-serif text-xl text-primary-foreground">Stackly OS</span>
+                <img src={stacklyLogo} alt="Stackly OS" className="h-9 w-auto" />
               </div>
               <p className="text-footer-muted text-sm leading-relaxed max-w-xs">
                 An open workspace operating system for modern teams.
