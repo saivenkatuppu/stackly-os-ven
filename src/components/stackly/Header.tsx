@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import stacklyLogo from "@/assets/stackly-logo.png";
+import stacklyIcon from "@/assets/stackly-icon.png";
 import { EarlyAccessModal } from "./EarlyAccessModal";
 
 const navLinks = [
@@ -25,17 +25,18 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-        <div className="container-wide mx-auto flex items-center justify-between h-32 px-6">
-          <a href="#" className="flex items-center gap-3">
-            <img src={stacklyLogo} alt="Stackly OS" className="h-56 w-auto object-contain -ml-4" />
+        <div className="container-wide mx-auto flex items-center justify-between h-20 px-6">
+          <a href="#" className="flex items-center gap-2">
+            <img src={stacklyIcon} alt="Stackly OS" className="h-8 w-auto object-contain" />
+            <span className="text-xl font-bold tracking-tight">Stackly</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className="text-sm px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 active:bg-primary/10 active:scale-95 font-medium"
+                className="text-sm px-4 py-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 font-medium"
               >
                 {link.label}
               </button>
