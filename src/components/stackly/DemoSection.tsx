@@ -509,21 +509,21 @@ export function DemoSection() {
         );
       case "Photos":
         const dummyPhotos = [
-          "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80",
+          "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
+          "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
+          "https://images.unsplash.com/photo-1531297461136-82lw8b2a?w=800&q=80", // Replaced broken image
+          "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+          "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
+          "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80",
+          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+          "https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&q=80",
           "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80",
-          "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
-          "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=80",
           "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-          "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80",
-          "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-          "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80",
-          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-          "https://images.unsplash.com/photo-1504384308090-c54be3852f92?w=800&q=80",
-          "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80",
-          "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-          "https://images.unsplash.com/photo-1488229297570-58520851e868?w=800&q=80",
-          "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80"
+          "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80",
+          "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+          "https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?w=800&q=80",
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80"
         ];
         return (
           <div className="p-6 h-full">
@@ -535,6 +535,9 @@ export function DemoSection() {
                     src={url}
                     alt={`Media ${i + 1}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80";
+                    }}
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="p-2 bg-white/20 backdrop-blur-md rounded-lg">
