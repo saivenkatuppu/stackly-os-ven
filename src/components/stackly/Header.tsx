@@ -25,9 +25,9 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-        <div className="container-wide mx-auto flex items-center justify-between h-16 px-6">
+        <div className="container-wide mx-auto flex items-center justify-between h-32 px-6">
           <a href="#" className="flex items-center gap-3">
-            <img src={stacklyLogo} alt="Stackly OS" className="h-8 w-auto" />
+            <img src={stacklyLogo} alt="Stackly OS" className="h-56 w-auto object-contain -ml-4" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
