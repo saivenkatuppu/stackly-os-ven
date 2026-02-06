@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import stacklyIcon from "@/assets/stackly-icon.png";
+import stacklyBrandLogo from "@/assets/stackly-brand-logo.png";
 import { EarlyAccessModal } from "./EarlyAccessModal";
 
 const navLinks = [
@@ -16,8 +17,22 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollTo = (href: string) => {
     setMobileOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Use a small timeout to allow navigation to complete before scrolling
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return;
+    }
+
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -25,10 +40,9 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-        <div className="container-wide mx-auto flex items-center justify-between h-20 px-6">
+        <div className="container-wide mx-auto flex items-center justify-between h-24 px-6">
           <a href="#" className="flex items-center gap-2">
-            <img src={stacklyIcon} alt="Stackly OS" className="h-8 w-auto object-contain" />
-            <span className="text-xl font-bold tracking-tight">Stackly</span>
+            <img src={stacklyBrandLogo} alt="Stackly OS" className="w-[280px] h-auto object-contain" />
           </a>
 
           <nav className="hidden md:flex items-center gap-1">

@@ -8,29 +8,29 @@ const productLinks = [
   { label: "Features", href: "#capabilities" },
   { label: "How It Works", href: "#how" },
   { label: "Roadmap", href: "#roadmap" },
-  { label: "Demo", href: "#" },
 ];
 
-const companyLinks = [
-  { label: "About", href: "#" },
-  { label: "Team", href: "#" },
-  { label: "Venturemond", href: "#" },
-  { label: "Careers", href: "#" },
-];
 
-const resourceLinks = [
-  { label: "Documentation", href: "#" },
-  { label: "Changelog", href: "#" },
-  { label: "Support", href: "#" },
-  { label: "Status", href: "#" },
-];
+import { useNavigate, useLocation } from "react-router-dom";
 
 export function FooterCTA() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [accessModalOpen, setAccessModalOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   const scrollTo = (href: string) => {
     if (href === "#") return;
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return;
+    }
+
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -51,37 +51,35 @@ export function FooterCTA() {
             <Button variant="footer" size="lg" onClick={() => setAccessModalOpen(true)}>
               Request Access
             </Button>
-            <Button variant="footerOutline" size="lg" onClick={() => setContactModalOpen(true)}>
-              Talk to the Team
-            </Button>
+
           </div>
         </div>
       </section>
 
       {/* Premium Footer */}
+      {/* Premium Footer */}
       <footer className="bg-footer border-t border-primary-foreground/10">
-        <div className="container-wide mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-            {/* Left: Logo & Description */}
-            <div className="md:col-span-4">
-              <div className="flex items-center gap-3 mb-4">
-                <img src={stacklyLogo} alt="Stackly OS" className="h-56 w-auto object-contain -ml-4" />
-              </div>
+        <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+
+            {/* Column 1: Brand */}
+            <div className="flex flex-col items-start gap-4">
+              <img src={stacklyLogo} alt="Stackly OS" className="h-[200px] w-auto object-contain -ml-6 -mt-10 mb-[-40px]" />
               <p className="text-footer-muted text-sm leading-relaxed max-w-xs">
-                An open workspace operating system for modern teams.
-                Self-hosted or managed, built on open infrastructure.
+                The control-first Work OS for teams building structured internal workflows.
               </p>
             </div>
 
-            {/* Middle: Navigation Links */}
-            <div className="md:col-span-2">
-              <h4 className="font-serif text-primary-foreground text-base mb-5">Product</h4>
-              <ul className="space-y-3">
+            {/* Column 2: Product */}
+            <div className="mt-2 md:mt-0 md:pl-12">
+              <h4 className="font-serif text-primary-foreground text-lg mb-6 tracking-wide">Product</h4>
+              <ul className="space-y-2">
                 {productLinks.map((link) => (
                   <li key={link.label}>
                     <button
                       onClick={() => scrollTo(link.href)}
-                      className="text-sm text-footer-muted hover:text-primary-foreground transition-colors"
+                      className="text-base text-footer-muted hover:text-white transition-colors text-left"
                     >
                       {link.label}
                     </button>
@@ -90,54 +88,22 @@ export function FooterCTA() {
               </ul>
             </div>
 
-            <div className="md:col-span-2">
-              <h4 className="font-serif text-primary-foreground text-base mb-5">Company</h4>
-              <ul className="space-y-3">
-                {companyLinks.map((link) => (
-                  <li key={link.label}>
-                    <button
-                      onClick={() => scrollTo(link.href)}
-                      className="text-sm text-footer-muted hover:text-primary-foreground transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="md:col-span-2">
-              <h4 className="font-serif text-primary-foreground text-base mb-5">Resources</h4>
-              <ul className="space-y-3">
-                {resourceLinks.map((link) => (
-                  <li key={link.label}>
-                    <button
-                      onClick={() => scrollTo(link.href)}
-                      className="text-sm text-footer-muted hover:text-primary-foreground transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Right: Legal */}
-            <div className="md:col-span-2">
-              <h4 className="font-serif text-primary-foreground text-base mb-5">Legal</h4>
-              <ul className="space-y-3">
+            {/* Column 3: Legal */}
+            <div className="mt-2 md:mt-0 md:pl-12">
+              <h4 className="font-serif text-primary-foreground text-lg mb-6 tracking-wide">Legal</h4>
+              <ul className="space-y-2">
                 <li>
-                  <button className="text-sm text-footer-muted hover:text-primary-foreground transition-colors">
+                  <button onClick={() => navigate('/privacy')} className="text-base text-footer-muted hover:text-white transition-colors text-left">
                     Privacy Policy
                   </button>
                 </li>
                 <li>
-                  <button className="text-sm text-footer-muted hover:text-primary-foreground transition-colors">
+                  <button onClick={() => navigate('/terms')} className="text-base text-footer-muted hover:text-white transition-colors text-left">
                     Terms of Service
                   </button>
                 </li>
                 <li>
-                  <button className="text-sm text-footer-muted hover:text-primary-foreground transition-colors">
+                  <button onClick={() => navigate('/security')} className="text-base text-footer-muted hover:text-white transition-colors text-left">
                     Security
                   </button>
                 </li>
@@ -146,15 +112,13 @@ export function FooterCTA() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-16 pt-8 border-t border-primary-foreground/10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-sm text-footer-muted">
-                © {new Date().getFullYear()} Venturemond. All rights reserved.
-              </p>
-              <p className="text-sm text-footer-muted">
-                Built with intention, not hype.
-              </p>
-            </div>
+          <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-footer-muted">
+              © 2026 Venturemond. All rights reserved.
+            </p>
+            <p className="text-sm text-footer-muted opacity-80">
+              Built with intention, not hype.
+            </p>
           </div>
         </div>
       </footer>

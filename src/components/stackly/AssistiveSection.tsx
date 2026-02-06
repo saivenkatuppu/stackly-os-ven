@@ -23,11 +23,11 @@ export function AssistiveSection() {
     <section className="section-padding bg-background">
       <div className="container-wide mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Assistive Capabilities
+          Assistive Workflows
         </h2>
-        <p className="text-sm text-muted-foreground mb-6">(Early Stage)</p>
+        <p className="text-sm text-muted-foreground mb-6">(Beta)</p>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-14">
-          Stackly OS is experimenting with assistive features
+          Stackly OS integrates context-aware assistance
           to improve how teams work with information.
         </p>
 

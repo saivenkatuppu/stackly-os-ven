@@ -5,7 +5,8 @@ import {
   Check, FolderOpen, Users, Activity, Shield,
   LayoutGrid, MessageCircle, Image as ImageIcon, Zap, Mail,
   Calendar, Edit3, GalleryVerticalEnd, Megaphone, Star, CheckSquare,
-  ListTodo, Table as TableIcon, Send, Trash2, Settings, Flame, FileText, UserPlus, File, Lock, Home, Video, Plus, List, Mic, Search, Filter, Bell, ChevronLeft, Clock, HardDrive, Tag, Cloud, MoreHorizontal, FileImage, FileVideo, Share2, Workflow, Eye
+  ListTodo, Table as TableIcon, Send, Trash2, Settings, Flame, FileText, UserPlus, File, Lock, Home, Video, Plus, List, Mic, Search, Filter, Bell, ChevronLeft, Clock, HardDrive, Tag, Cloud, MoreHorizontal, FileImage, FileVideo, Share2, Workflow, Eye, Sparkles, SquareUser, X, Indent,
+  LogOut, HelpCircle, Sliders, Accessibility, User, Menu
 } from "lucide-react";
 import stacklyLogo from "@/assets/stackly-logo.png";
 import stacklyIcon from "@/assets/stackly-icon.png";
@@ -60,6 +61,8 @@ export function DemoSection() {
   const [talkSidebarView, setTalkSidebarView] = useState("main");
   const [activeFileFolder, setActiveFileFolder] = useState("All files");
   const [activeContact, setActiveContact] = useState("Jane Doe");
+  const [assistantOpen, setAssistantOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -67,7 +70,7 @@ export function DemoSection() {
         return (
           <div className="flex flex-col h-full relative p-6 overflow-y-auto">
             <div className="relative z-10 text-center py-6">
-              <h3 className="text-3xl font-semibold tracking-tight text-white/90">Good afternoon, User</h3>
+              <h3 className="text-3xl font-semibold tracking-tight text-white/90">Hello, User</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-20">
               {/* Recommended files */}
@@ -1014,86 +1017,354 @@ export function DemoSection() {
         );
       case "Tasks":
         return (
-          <div className="p-6 h-full max-w-4xl">
-            <h3 className="text-2xl font-semibold mb-6 text-white">Pending Tasks</h3>
-            <div className="space-y-2">
-              {[
-                { task: "Update Hero section copy", done: true, priority: "High" },
-                { task: "Replace Deck icon with custom SVG", done: true, priority: "Medium" },
-                { task: "Add dummy data for all 15 modules", done: false, priority: "Critical" },
-                { task: "Review mobile UI responsiveness", done: false, priority: "Low" },
-                { task: "Fix navigation tap targets", done: true, priority: "High" },
-                { task: "Update color palette in Tailwind config", done: false, priority: "Medium" },
-                { task: "Write unit tests for Auth component", done: false, priority: "High" },
-                { task: "Prepare demo script for Monday", done: false, priority: "Critical" }
-              ].map((task, i) => (
-                <div key={i} className="bg-black/40 backdrop-blur-md border border-white/5 p-4 rounded-xl flex items-center gap-4 hover:bg-white/5 cursor-pointer">
-                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors ${task.done ? 'bg-primary border-primary' : 'border-white/20'}`}>
-                    {task.done && <Check className="w-3.5 h-3.5 text-black font-bold" />}
+          <div className="h-full w-full overflow-y-auto">
+            <div className="p-6 h-full max-w-4xl">
+              <h3 className="text-2xl font-semibold mb-6 text-white">Pending Tasks</h3>
+              <div className="space-y-2">
+                {[
+                  { task: "Update Hero section copy", done: true, priority: "High" },
+                  { task: "Replace Deck icon with custom SVG", done: true, priority: "Medium" },
+                  { task: "Add dummy data for all 15 modules", done: false, priority: "Critical" },
+                  { task: "Review mobile UI responsiveness", done: false, priority: "Low" },
+                  { task: "Fix navigation tap targets", done: true, priority: "High" },
+                  { task: "Update color palette in Tailwind config", done: false, priority: "Medium" },
+                  { task: "Write unit tests for Auth component", done: false, priority: "High" },
+                  { task: "Prepare demo script for Monday", done: false, priority: "Critical" }
+                ].map((task, i) => (
+                  <div key={i} className="bg-black/40 backdrop-blur-md border border-white/5 p-4 rounded-xl flex items-center gap-4 hover:bg-white/5 cursor-pointer">
+                    <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors ${task.done ? 'bg-primary border-primary' : 'border-white/20'}`}>
+                      {task.done && <Check className="w-3.5 h-3.5 text-black font-bold" />}
+                    </div>
+                    <span className={`flex-1 text-sm ${task.done ? 'text-white/30 line-through' : 'text-white'}`}>{task.task}</span>
+                    <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">{task.priority}</span>
                   </div>
-                  <span className={`flex-1 text-sm ${task.done ? 'text-white/30 line-through' : 'text-white'}`}>{task.task}</span>
-                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">{task.priority}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         );
       case "Tables":
         return (
-          <div className="p-6 h-full">
-            <h3 className="text-2xl font-semibold mb-6 text-white">Structured Data</h3>
-            <div className="bg-black/40 backdrop-blur-md rounded-2xl border border-white/5 overflow-hidden">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-white/5 border-b border-white/10">
-                    <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Client Name</th>
-                    <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Platform Status</th>
-                    <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Users</th>
-                    <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Last Active</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  {[
-                    { name: "Acme Corp", status: "Active", users: 154, active: "5m ago" },
-                    { name: "Global Industries", status: "Pilot", users: 12, active: "1h ago" },
-                    { name: "TechStart Inc", status: "Onboarding", users: 5, active: "Today" },
-                    { name: "Stackly OS", status: "Internal", users: 89, active: "Just now" },
-                    { name: "Cyberdyne Systems", status: "Active", users: 230, active: "Yesterday" },
-                    { name: "Massively Dynamic", status: "Pilot", users: 8, active: "2 days ago" },
-                    { name: "Hooli", status: "Churned", users: 0, active: "1 month ago" },
-                    { name: "Pied Piper", status: "Active", users: 4, active: "3h ago" },
-                    { name: "Initech", status: "Pilot", users: 25, active: "5h ago" },
-                    { name: "Umbrella Corp", status: "Active", users: 1200, active: "1m ago" }
-                  ].map((row, i) => (
-                    <tr key={i} className="border-b border-white/5 hover:bg-white/10 transition-colors cursor-pointer last:border-0">
-                      <td className="p-4 text-white font-medium">{row.name}</td>
-                      <td className="p-4"><span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">{row.status}</span></td>
-                      <td className="p-4 text-white/60">{row.users}</td>
-                      <td className="p-4 text-white/40 text-xs">{row.active}</td>
+          <div className="h-full w-full overflow-y-auto">
+            <div className="p-6 h-full">
+              <h3 className="text-2xl font-semibold mb-6 text-white">Structured Data</h3>
+              <div className="bg-black/40 backdrop-blur-md rounded-2xl border border-white/5 overflow-hidden">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-white/5 border-b border-white/10">
+                      <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Client Name</th>
+                      <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Platform Status</th>
+                      <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Users</th>
+                      <th className="p-4 text-xs font-bold text-white/40 uppercase tracking-widest">Last Active</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="text-sm">
+                    {[
+                      { name: "Acme Corp", status: "Active", users: 154, active: "5m ago" },
+                      { name: "Global Industries", status: "Pilot", users: 12, active: "1h ago" },
+                      { name: "TechStart Inc", status: "Onboarding", users: 5, active: "Today" },
+                      { name: "Stackly OS", status: "Internal", users: 89, active: "Just now" },
+                      { name: "Cyberdyne Systems", status: "Active", users: 230, active: "Yesterday" },
+                      { name: "Massively Dynamic", status: "Pilot", users: 8, active: "2 days ago" },
+                      { name: "Hooli", status: "Churned", users: 0, active: "1 month ago" },
+                      { name: "Pied Piper", status: "Active", users: 4, active: "3h ago" },
+                      { name: "Initech", status: "Pilot", users: 25, active: "5h ago" },
+                      { name: "Umbrella Corp", status: "Active", users: 1200, active: "1m ago" }
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-white/5 hover:bg-white/10 transition-colors cursor-pointer last:border-0">
+                        <td className="p-4 text-white font-medium">{row.name}</td>
+                        <td className="p-4"><span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">{row.status}</span></td>
+                        <td className="p-4 text-white/60">{row.users}</td>
+                        <td className="p-4 text-white/40 text-xs">{row.active}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         );
       default:
         return (
-          <div className="p-12 h-full flex flex-col items-center justify-center text-center">
-            <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
-              {navItems.find(i => i.name === activeTab)?.icon && (
-                <div className="text-primary">
-                  {(() => {
-                    const Icon = navItems.find(i => i.name === activeTab)?.icon;
-                    return Icon ? <Icon className="w-10 h-10" /> : null;
-                  })()}
-                </div>
-              )}
+          <div className="h-full w-full overflow-y-auto">
+            <div className="p-12 h-full flex flex-col items-center justify-center text-center">
+              <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
+                {navItems.find(i => i.name === activeTab)?.icon && (
+                  <div className="text-primary">
+                    {(() => {
+                      const Icon = navItems.find(i => i.name === activeTab)?.icon;
+                      return Icon ? <Icon className="w-10 h-10" /> : null;
+                    })()}
+                  </div>
+                )}
+              </div>
+              <h3 className="text-3xl font-bold mb-4 text-white uppercase tracking-tight">{activeTab}</h3>
+              <p className="text-white/60 max-w-md mx-auto leading-relaxed">
+                This module is currently active in the workspace layer. Dummy data and integration layers are being populated for this preview.
+              </p>
             </div>
-            <h3 className="text-3xl font-bold mb-4 text-white uppercase tracking-tight">{activeTab}</h3>
-            <p className="text-white/60 max-w-md mx-auto leading-relaxed">
-              This module is currently active in the workspace layer. Dummy data and integration layers are being populated for this preview.
-            </p>
+          </div>
+        );
+      case "Apps":
+        return (
+          <div className="h-full w-full bg-[#09090b] flex flex-col">
+            <div className="flex items-center justify-between px-6 h-14 border-b border-white/5 shrink-0 bg-[#09090b]">
+              <div className="flex items-center gap-4">
+                <h3 className="text-base font-semibold text-white">App bundles</h3>
+              </div>
+              <Button
+                variant="ghost"
+                className="h-9 gap-2 bg-[#27272a] text-white hover:bg-[#27272a] hover:text-white transition-colors border border-white/10"
+                onClick={() => setActiveTab("Dashboard")}
+              >
+                Close
+              </Button>
+            </div>
+
+            <div className="p-8 overflow-y-auto flex-1">
+              <div className="space-y-10 max-w-5xl">
+                {/* Enterprise Bundle */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 h-8">
+                    <h4 className="text-lg font-bold text-white">Enterprise bundle</h4>
+                    <Button variant="outline" className="bg-[#1a1f1c] hover:bg-[#2a302c] text-blue-400 border border-white/10 h-8 text-xs font-semibold px-3">
+                      Download and enable all
+                    </Button>
+                  </div>
+                  <div className="border-t border-white/10 divide-y divide-white/5">
+                    {[
+                      { name: "Auditing / Logging", ver: "1.22.0", featured: true, action: "Enable" },
+                      { name: "File access control", ver: "3.0.2", featured: true, action: "Download and enable" },
+                      { name: "Files automated tagging", ver: "3.0.3", featured: true, action: "Download and enable" },
+                      { name: "LDAP user and group backend", ver: "1.23.0", featured: true, action: "Enable" },
+                      { name: "Retention", ver: "3.0.0", featured: true, action: "Download and enable" },
+                      { name: "SSO & SAML authentication", ver: "7.1.3", featured: true, action: "Download and enable" },
+                      { name: "Terms of service", ver: "4.6.1", featured: false, action: "Download and enable" },
+                    ].map((app, i) => (
+                      <div key={i} className="flex items-center justify-between py-3 hover:bg-white/[0.02] -mx-4 px-4 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <Settings className="w-4 h-4 text-white/40" />
+                          <span className="text-white/90 text-sm font-medium">{app.name}</span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <span className="text-white/40 text-xs w-16 text-right">{app.ver}</span>
+                          <div className="w-24 flex justify-end">
+                            {app.featured && <span className="text-[10px] border border-white/20 rounded px-1.5 py-0.5 text-white/60">✓ Featured</span>}
+                          </div>
+                          <Button className={`h-8 px-4 text-xs font-medium w-[160px] ${app.action === 'Enable' ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500/10 hover:bg-blue-500/20 text-blue-400'}`}>
+                            {app.action}
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Hub Bundle */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <h4 className="text-lg font-bold text-white">Hub bundle</h4>
+                    <Button variant="outline" className="bg-[#1a1f1c] hover:bg-[#2a302c] text-blue-400 border border-white/10 h-8 text-xs font-semibold px-3">
+                      Download and enable all
+                    </Button>
+                  </div>
+                  <div className="border-t border-white/10 divide-y divide-white/5">
+                    {[
+                      { name: "Calendar", ver: "6.1.5", featured: true, type: "update" },
+                      { name: "Collabora Online - Built-in CODE Server", ver: "25.4.802", featured: false, action: "Download and enable" },
+                      { name: "Contacts", ver: "8.3.1", featured: true, type: "disable" },
+                      { name: "Mail", ver: "5.6.9", featured: true, type: "update" },
+                      { name: "Stackly OS Office", ver: "9.0.2", featured: true, action: "Download and enable" },
+                      { name: "Talk", ver: "22.0.7", featured: true, type: "update" },
+                    ].map((app, i) => (
+                      <div key={i} className="flex items-center justify-between py-3 hover:bg-white/[0.02] -mx-4 px-4 transition-colors">
+                        <div className="flex items-center gap-3">
+                          {app.name.includes("Calendar") ? <Calendar className="w-4 h-4 text-white/40" /> :
+                            app.name.includes("Mail") ? <Mail className="w-4 h-4 text-white/40" /> :
+                              app.name.includes("Talk") ? <MessageCircle className="w-4 h-4 text-white/40" /> :
+                                <Settings className="w-4 h-4 text-white/40" />}
+                          <span className="text-white/90 text-sm font-medium">{app.name}</span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <span className="text-white/40 text-xs w-16 text-right">{app.ver}</span>
+                          <div className="w-24 flex justify-end">
+                            {app.featured && <span className="text-[10px] border border-white/20 rounded px-1.5 py-0.5 text-white/60">✓ Featured</span>}
+                          </div>
+                          <div className="w-[160px] flex justify-end gap-2">
+                            {app.type === 'update' ? (
+                              <>
+                                <Button className="h-8 px-3 text-xs font-medium bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 flex-1">
+                                  Update to {app.name === "Calendar" ? "6.1.6" : app.name === "Mail" ? "5.6.10" : "22.0.8"}
+                                </Button>
+                                <Button className="h-8 px-3 text-xs font-medium bg-[#1a1f1c] hover:bg-white/5 text-white/60">Disable</Button>
+                              </>
+                            ) : app.type === 'disable' ? (
+                              <Button className="h-8 px-3 text-xs font-medium bg-[#1a1f1c] hover:bg-white/5 text-white/60 w-full">Disable</Button>
+                            ) : (
+                              <Button className="h-8 px-3 text-xs font-medium bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 w-full">
+                                {app.action}
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Groupware Bundle */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <h4 className="text-lg font-bold text-white">Groupware bundle</h4>
+                    <Button variant="outline" className="bg-[#1a1f1c] hover:bg-[#2a302c] text-white/60 border border-white/10 h-8 text-xs font-semibold px-3">
+                      Disable all
+                    </Button>
+                  </div>
+                  <div className="border-t border-white/10 divide-y divide-white/5">
+                    {[
+                      { name: "Calendar", ver: "6.1.5", featured: true, type: "update" },
+                      { name: "Contacts", ver: "8.3.1", featured: true, type: "disable" },
+                      { name: "Deck", ver: "1.16.3", featured: true, type: "disable" },
+                      { name: "Mail", ver: "5.6.9", featured: true, type: "update" },
+                    ].map((app, i) => (
+                      <div key={i} className="flex items-center justify-between py-3 hover:bg-white/[0.02] -mx-4 px-4 transition-colors">
+                        <div className="flex items-center gap-3">
+                          {app.name === "Calendar" ? <Calendar className="w-4 h-4 text-white/40" /> :
+                            app.name === "Contacts" ? <Users className="w-4 h-4 text-white/40" /> :
+                              app.name === "Deck" ? <LayoutGrid className="w-4 h-4 text-white/40" /> :
+                                <Mail className="w-4 h-4 text-white/40" />}
+                          <span className="text-white/90 text-sm font-medium">{app.name}</span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <span className="text-white/40 text-xs w-16 text-right">{app.ver}</span>
+                          <div className="w-24 flex justify-end">
+                            {app.featured && <span className="text-[10px] border border-white/20 rounded px-1.5 py-0.5 text-white/60">✓ Featured</span>}
+                          </div>
+                          <div className="w-[160px] flex justify-end gap-2">
+                            {app.type === 'update' ? (
+                              <>
+                                <Button className="h-8 px-3 text-xs font-medium bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 flex-1">
+                                  Update to {app.name === "Calendar" ? "6.1.6" : "5.6.10"}
+                                </Button>
+                                <Button className="h-8 px-3 text-xs font-medium bg-[#1a1f1c] hover:bg-white/5 text-white/60">Disable</Button>
+                              </>
+                            ) : (
+                              <Button className="h-8 px-3 text-xs font-medium bg-[#1a1f1c] hover:bg-white/5 text-white/60 w-full">Disable</Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Social Sharing Bundle */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <h4 className="text-lg font-bold text-white">Social sharing bundle</h4>
+                    <Button variant="outline" className="bg-[#1a1f1c] hover:bg-[#2a302c] text-blue-400 border border-white/10 h-8 text-xs font-semibold px-3">
+                      Download and enable all
+                    </Button>
+                  </div>
+                  <div className="border-t border-white/10 divide-y divide-white/5">
+                    {[
+                      { name: "Social sharing via Diaspora", ver: "4.0.1", featured: false },
+                      { name: "Social sharing via Facebook", ver: "4.0.1", featured: false },
+                      { name: "Social sharing via Twitter", ver: "4.0.1", featured: false },
+                      { name: "Social sharing via email", ver: "4.0.1", featured: false },
+                    ].map((app, i) => (
+                      <div key={i} className="flex items-center justify-between py-3 hover:bg-white/[0.02] -mx-4 px-4 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <Settings className="w-4 h-4 text-white/40" />
+                          <span className="text-white/90 text-sm font-medium">{app.name}</span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <span className="text-white/40 text-xs w-16 text-right">{app.ver}</span>
+                          <div className="w-24"></div>
+                          <Button className="h-8 px-4 text-xs font-medium w-[160px] bg-blue-500/10 hover:bg-blue-500/20 text-blue-400">
+                            Download and enable
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Education Bundle */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <h4 className="text-lg font-bold text-white">Education bundle</h4>
+                    <Button variant="outline" className="bg-[#1a1f1c] hover:bg-[#2a302c] text-blue-400 border border-white/10 h-8 text-xs font-semibold px-3">
+                      Download and enable all
+                    </Button>
+                  </div>
+                  <div className="border-t border-white/10 divide-y divide-white/5">
+                    {[
+                      { name: "Announcement center", ver: "7.3.0", featured: true, action: "Download and enable" },
+                      { name: "Dashboard", ver: "7.12.0", featured: true, action: "Disable" },
+                      { name: "Quota warning", ver: "1.23.0", featured: false, action: "Download and enable" },
+                      { name: "SSO & SAML authentication", ver: "7.1.3", featured: true, action: "Download and enable" },
+                      { name: "Team Folders", ver: "20.1.9", featured: true, action: "Download and enable" },
+                      { name: "Teams", ver: "32.0.0", featured: true, action: "Disable" },
+                      { name: "Whiteboard", ver: "1.5.4", featured: true, action: "Download and enable" },
+                    ].map((app, i) => (
+                      <div key={i} className="flex items-center justify-between py-3 hover:bg-white/[0.02] -mx-4 px-4 transition-colors">
+                        <div className="flex items-center gap-3">
+                          {app.name === "Dashboard" ? <LayoutGrid className="w-4 h-4 text-white/40" /> :
+                            app.name === "Teams" ? <Users className="w-4 h-4 text-white/40" /> :
+                              <Settings className="w-4 h-4 text-white/40" />}
+                          <span className="text-white/90 text-sm font-medium">{app.name}</span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <span className="text-white/40 text-xs w-16 text-right">{app.ver}</span>
+                          <div className="w-24 flex justify-end">
+                            {app.featured && <span className="text-[10px] border border-white/20 rounded px-1.5 py-0.5 text-white/60">✓ Featured</span>}
+                          </div>
+                          <Button className={`h-8 px-4 text-xs font-medium w-[160px] ${app.action === 'Disable' ? 'bg-[#1a1f1c] hover:bg-white/5 text-white/60' : 'bg-blue-500/10 hover:bg-blue-500/20 text-blue-400'}`}>
+                            {app.action}
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Loose End Items */}
+                <div className="space-y-4 pt-4 border-t border-white/10">
+                  <div className="divide-y divide-white/5">
+                    {[
+                      { name: "Antivirus for files", ver: "6.1.0", featured: false, action: "Download and enable" },
+                      { name: "Auditing / Logging", ver: "1.22.0", featured: true, action: "Enable" },
+                      { name: "Collectives", ver: "3.5.0", featured: true, action: "Download and enable" },
+                      { name: "Confidential files", ver: "4.0.0", featured: false, action: "Download and enable" },
+                      { name: "Forms", ver: "5.2.4", featured: true, action: "Download and enable" },
+                      { name: "Stackly OS Office", ver: "9.0.2", featured: true, action: "Download and enable" },
+                      { name: "Retention", ver: "3.0.0", featured: true, action: "Download and enable" },
+                      { name: "Tables", ver: "1.0.3", featured: true, action: "Download and enable" },
+                      { name: "Two-Factor Authentication via Stackly OS notification", ver: "6.0.0-dev.0", featured: true, action: "Enable" },
+                      { name: "Whiteboard", ver: "1.5.4", featured: true, action: "Download and enable" },
+                    ].map((app, i) => (
+                      <div key={i} className="flex items-center justify-between py-3 hover:bg-white/[0.02] -mx-4 px-4 transition-colors">
+                        <div className="flex items-center gap-3">
+                          {app.name.includes("Authentication") ? <Bell className="w-4 h-4 text-white/40" /> :
+                            <Settings className="w-4 h-4 text-white/40" />}
+                          <span className="text-white/90 text-sm font-medium">{app.name}</span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <span className="text-white/40 text-xs w-16 text-right">{app.ver}</span>
+                          <div className="w-24 flex justify-end">
+                            {app.featured && <span className="text-[10px] border border-white/20 rounded px-1.5 py-0.5 text-white/60">✓ Featured</span>}
+                          </div>
+                          <Button className={`h-8 px-4 text-xs font-medium w-[160px] ${app.action === 'Enable' ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500/10 hover:bg-blue-500/20 text-blue-400'}`}>
+                            {app.action}
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         );
     }
@@ -1101,7 +1372,7 @@ export function DemoSection() {
 
   return (
     <>
-      <section className="section-padding bg-section-alt">
+      <section id="demo" className="section-padding bg-section-alt">
         <div className="container-wide mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             See Stackly OS in Action
@@ -1118,42 +1389,182 @@ export function DemoSection() {
 
           {/* Live workspace mock - Dark Mode Dashboard Redesign */}
           <div className="max-w-6xl mx-auto mb-12">
-            <div className="bg-[url('/workspace_bg.jpg')] bg-cover bg-center rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative min-h-[750px] text-white font-sans flex flex-col">
+            <div className="bg-[url('/workspace_bg.jpg')] bg-cover bg-center rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative h-[800px] text-white font-sans flex flex-col">
               {/* Background Ambient Effect */}
               <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] pointer-events-none" />
 
               {/* Top Navigation Bar */}
-              <div className="relative z-20 p-6 flex items-center justify-between border-b border-white/5 bg-black/40 backdrop-blur-md overflow-x-auto">
-                <div className="flex items-center gap-6 text-sm font-medium text-white/70 min-w-max">
-                  <div className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors mr-4" onClick={() => setActiveTab("Dashboard")}>
-                    <img src={stacklyIcon} alt="Stackly OS" className="w-8 h-8 object-contain" />
-                  </div>
-                  {/* Mock Nav Items */}
-                  <div className="flex gap-5">
-                    {navItems.map((item) => (
-                      <div
-                        key={item.name}
-                        onClick={() => setActiveTab(item.name)}
-                        className={`flex flex-col items-center gap-1.5 cursor-pointer transition-all group px-1 ${activeTab === item.name ? 'text-primary' : 'text-white/60 hover:text-white'}`}
-                      >
-                        <item.icon className={`w-5 h-5 group-hover:scale-110 transition-transform ${activeTab === item.name ? 'scale-110' : ''}`} />
-                        <span className={`text-[10px] font-bold tracking-widest uppercase ${activeTab === item.name ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{item.name}</span>
-                      </div>
-                    ))}
+              <div className="relative z-30 p-6 flex items-center justify-between border-b border-white/5 bg-black/40 backdrop-blur-md">
+                <div className="flex-1 overflow-x-auto no-scrollbar mask-gradient-r mr-6">
+                  <div className="flex items-center gap-6 text-sm font-medium text-white/70 min-w-max">
+                    <div className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors mr-4" onClick={() => setActiveTab("Dashboard")}>
+                      <img src={stacklyIcon} alt="Stackly OS" className="w-8 h-8 object-contain" />
+                    </div>
+                    {/* Mock Nav Items */}
+                    <div className="flex gap-5">
+                      {navItems.map((item) => (
+                        <div
+                          key={item.name}
+                          onClick={() => setActiveTab(item.name)}
+                          className={`flex flex-col items-center gap-1.5 cursor-pointer transition-all group px-1 ${activeTab === item.name ? 'text-primary' : 'text-white/60 hover:text-white'}`}
+                        >
+                          <item.icon className={`w-5 h-5 group-hover:scale-110 transition-transform ${activeTab === item.name ? 'scale-110' : ''}`} />
+                          <span className={`text-[10px] font-bold tracking-widest uppercase ${activeTab === item.name ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-white/60 pl-6 border-l border-white/10 ml-6 hidden xl:flex">
-                  <span className="hover:text-white cursor-pointer transition-colors text-sm">Search</span>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-primary border border-white/20" />
+                <div className="flex items-center gap-6 text-white/60 pl-6 border-l border-white/10 shrink-0">
+                  <Sparkles
+                    onClick={() => setAssistantOpen(true)}
+                    className="w-5 h-5 hover:text-white cursor-pointer transition-colors"
+                  />
+
+                  <div className="relative cursor-pointer ml-1">
+                    <div
+                      className="w-9 h-9 rounded-full bg-[#050505] border border-white/20 flex items-center justify-center text-blue-500 font-medium text-sm hover:border-white/40 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setProfileOpen(!profileOpen);
+                      }}
+                    >
+                      S
+                    </div>
+                    <div className="absolute -bottom-0.5 -right-0.5 bg-[#1a1f1c] rounded-full p-0.5 pointer-events-none">
+                      <div className="bg-green-500 rounded-full w-3.5 h-3.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 text-black stroke-[3]" />
+                      </div>
+                    </div>
+
+                    {/* Profile Dropdown Menu */}
+                    {profileOpen && (
+                      <>
+                        <div className="fixed inset-0 z-40" onClick={() => setProfileOpen(false)} />
+                        <div className="absolute top-full right-0 mt-2 w-[180px] bg-[#18181b] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 flex flex-col pointer-events-auto animate-in fade-in slide-in-from-top-2 duration-200">
+
+
+                          {/* Menu Items */}
+                          <div className="flex flex-col p-1.5">
+                            <div
+                              className="flex items-center gap-3 px-3 py-2 hover:bg-white/5 rounded-lg cursor-pointer transition-colors group"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveTab("Apps");
+                                setProfileOpen(false);
+                              }}
+                            >
+                              <Plus className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" />
+                              <span className="text-sm text-white/80 group-hover:text-white transition-colors">Apps</span>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
 
               <div className="flex flex-1 overflow-hidden relative z-10">
                 {/* Main Content Area - Now full width without sidebar */}
-                <div className="flex-1 overflow-y-auto text-left relative">
+                <div className="flex-1 overflow-hidden text-left relative">
                   {renderContent()}
                 </div>
               </div>
+
+              {/* Stackly OS Assistant Overlay */}
+              {/* Stackly OS Assistant Overlay */}
+              {assistantOpen && (
+                <div className="absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 transition-opacity animate-in fade-in duration-200">
+                  <div className="w-full max-w-5xl h-[650px] bg-[#09090b] rounded-2xl border border-white/10 shadow-2xl flex flex-col overflow-hidden relative">
+                    {/* Assistant Header */}
+                    <div className="flex items-center justify-center py-3 border-b border-white/5 relative bg-[#09090b]">
+                      <div className="flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-blue-400" />
+                        <span className="font-semibold text-sm text-blue-400">Stackly OS Assistant</span>
+                      </div>
+                      <div
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-md cursor-pointer transition-colors"
+                        onClick={() => setAssistantOpen(false)}
+                      >
+                        <X className="w-4 h-4 text-white/40 hover:text-white" />
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex overflow-hidden">
+                      {/* Left Sidebar */}
+                      <div className="w-72 border-r border-white/5 bg-[#0c0c0e] flex flex-col p-5">
+                        <Button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white gap-2 w-full mb-4 font-medium border-0 h-10 shadow-lg shadow-purple-500/20 transition-all">
+                          <ImageIcon className="w-4 h-4" /> Work with images
+                        </Button>
+
+                        <Button variant="outline" className="text-white border-white/10 hover:bg-white/5 w-full justify-center gap-2 mb-8 h-10 transition-colors">
+                          <Plus className="w-4 h-4" /> New task
+                        </Button>
+
+                        <div className="space-y-2 overflow-y-auto pr-1">
+                          {[
+                            { title: "Welcome to the Team", status: "Completed", time: "6 days ago", color: "text-green-400" },
+                            { title: "Generate Logo V2", status: "Processing", time: "Just now", color: "text-blue-400 animate-pulse" },
+                            { title: "Review Guidelines", status: "Pending", time: "1h ago", color: "text-white/40" }
+                          ].map((task, i) => (
+                            <div key={i} className={`p-3.5 rounded-xl cursor-pointer transition-all border group ${i === 1 ? 'bg-white/[0.03] border-white/10' : 'hover:bg-white/[0.02] border-transparent'}`}>
+                              <h4 className="text-sm font-medium text-white/90 truncate mb-1.5 group-hover:text-blue-200 transition-colors">{task.title}</h4>
+                              <div className="flex justify-between items-center text-xs">
+                                <span className={`font-medium ${task.color}`}>{task.status}</span>
+                                <span className="text-white/30">{task.time}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Main Content Area */}
+                      <div className="flex-1 bg-[#09090b] p-8 flex flex-col relative overflow-y-auto">
+                        <div className="max-w-3xl mx-auto w-full flex flex-col h-full">
+                          {/* Page Title */}
+                          <div className="mb-8">
+                            <h3 className="text-2xl font-bold text-white tracking-tight">Generate sticker</h3>
+                          </div>
+
+                          <div className="flex-1 flex flex-col gap-6">
+                            <div>
+                              <label className="text-xs font-semibold text-white/60 mb-2 block ml-1 uppercase tracking-wider">Prompt</label>
+                              <div className="bg-[#121212] border border-white/10 rounded-lg p-1.5 flex items-center gap-2 focus-within:border-white/20 transition-colors ring-0 ring-offset-0 relative">
+                                <input
+                                  type="text"
+                                  placeholder="Describe the sticker you would like to create"
+                                  className="bg-transparent text-white w-full px-3 py-2 text-sm focus:outline-none placeholder:text-white/20 h-10"
+                                />
+                                <div className="pr-1.5">
+                                  <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/10 gap-2 h-8 px-3 rounded-md border border-white/5 bg-white/[0.02] text-xs font-medium">
+                                    <File className="w-3.5 h-3.5" /> Choose file
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Preview Area */}
+                            <div className="flex-1 border-2 border-dashed border-white/10 rounded-xl bg-white/[0.01] flex flex-col items-center justify-center text-center p-6 min-h-[200px] hover:border-white/20 transition-colors cursor-default">
+                              <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-3">
+                                <ImageIcon className="w-6 h-6 text-white/20" />
+                              </div>
+                              <p className="text-white/30 text-sm font-medium">Preview will appear here</p>
+                            </div>
+
+                            {/* Footer Action */}
+                            <div className="flex justify-end pt-2">
+                              <Button className="bg-white text-black hover:bg-white/90 gap-2 font-medium px-6 h-10 shadow-lg shadow-white/5 transition-all text-sm">
+                                <Sparkles className="w-4 h-4 text-blue-600" /> Generate sticker
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -1162,9 +1573,7 @@ export function DemoSection() {
             with early testing underway with select teams.
           </p>
 
-          <Button variant="hero" size="lg" onClick={() => setDemoModalOpen(true)}>
-            Request Demo Access
-          </Button>
+
         </div>
       </section>
 

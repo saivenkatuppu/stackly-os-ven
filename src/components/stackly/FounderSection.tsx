@@ -42,7 +42,7 @@ export function FounderSection() {
 
                     {/* Content Side */}
                     <div className="w-full lg:w-2/3 text-center lg:text-left animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-                        <span className="text-eyebrow mb-4 block mx-auto lg:mx-0 w-fit">THE FOUNDER</span>
+
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
                             Building the next generation of
                             <span className="text-primary block mt-2">technology-driven ventures.</span>

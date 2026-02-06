@@ -1,11 +1,11 @@
 import { Check, X } from "lucide-react";
 
 const comparisons = [
-  { stackly: "Open-core based", traditional: "Closed systems" },
-  { stackly: "Self-hosted or managed", traditional: "Vendor-controlled" },
-  { stackly: "Modular", traditional: "Fixed bundles" },
-  { stackly: "Data-first", traditional: "Platform lock-in" },
-  { stackly: "Evolving assistive features", traditional: "Forced AI" },
+  { stackly: "Proprietary control", traditional: "Black-box systems" },
+  { stackly: "Private & Secure", traditional: "Data siloed by vendors" },
+  { stackly: "Unified workspace", traditional: "Fragmented tools" },
+  { stackly: "Operational clarity", traditional: "Hidden workflows" },
+  { stackly: "Assistive workflows", traditional: "Forced AI adoption" },
 ];
 
 export function ComparisonSection() {

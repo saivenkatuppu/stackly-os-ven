@@ -11,6 +11,7 @@ import { ProofSection } from "@/components/stackly/ProofSection";
 import { RoadmapSection } from "@/components/stackly/RoadmapSection";
 import { AudienceSection } from "@/components/stackly/AudienceSection";
 import { FounderSection } from "@/components/stackly/FounderSection";
+
 import { FooterCTA } from "@/components/stackly/FooterCTA";
 import { MobileCTA } from "@/components/stackly/MobileCTA";
 
@@ -31,6 +32,7 @@ const Index = () => {
         <RoadmapSection />
         <AudienceSection />
         <FounderSection />
+
         <FooterCTA />
       </main>
       <MobileCTA />

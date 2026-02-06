@@ -31,12 +31,10 @@ export function WhatSection() {
           What Stackly OS Is
         </h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
-          Stackly OS is an open, modular workspace operating system.
-          It brings files, collaboration, and internal workflows together
-          on infrastructure teams control.
+          Stackly OS acts as the operating layer where teams organize work, control access, track activity, and move tasks forward — without relying on scattered tools.
         </p>
         <p className="text-sm text-primary/80 max-w-2xl mx-auto mb-14 italic">
-          Built on proven open-source infrastructure and extended with proprietary workflows, controls, and assistive layers.
+          An enterprise workspace platform designed for control, structure, and operational clarity.
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-14">

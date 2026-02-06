@@ -140,7 +140,8 @@ export function HeroSection() {
             Stackly OS
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 animate-fade-in-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
-            Stackly OS is a control-first workspace layer built on open infrastructure, bringing files, collaboration, and workflows together under your control.
+            Stackly OS is a control-first Work OS that brings files, collaboration, and workflows into one unified workspace.
+            Designed for teams that want visibility, structure, and control over how work actually happens.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -150,14 +151,14 @@ export function HeroSection() {
               </Button>
             </MagneticWrapper>
             <MagneticWrapper>
-              <Button variant="heroOutline" size="lg" onClick={() => setDemoModalOpen(true)} className="min-w-[180px]">
+              <Button variant="heroOutline" size="lg" onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })} className="min-w-[180px]">
                 View Workspace Demo
               </Button>
             </MagneticWrapper>
           </div>
 
           <p className="text-sm text-muted-foreground animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
-            Built on open source. Used internally. Early customer pilots underway.
+            Trusted by teams building structured, secure internal workflows.
           </p>
 
           {/* Workspace UI Mock - Dark Mode Team Space */}
